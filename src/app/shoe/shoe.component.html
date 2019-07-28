@@ -1,0 +1,57 @@
+<h2>{{sTitle}}</h2>
+
+<p>Add brand</p>
+<p>
+<input type="text" [(ngModel)]="sMyBrand" (keyup.enter)="eShowWord()"/>
+<button (click)="mGetBrand()">Show brand</button>
+<button (click)="mAddBrand()">Add brand</button>
+</p>
+<strong>{{sMyBrand}}</strong>
+
+<p>Buy the best brand sneakers</p>
+	<ul>
+		<li *ngFor="let sBrand of aBrands; let iIndex = index">
+			{{iIndex + ' - ' + sBrand}}
+			<button (click)="mDeleteBrand(iIndex)">Delete</button>
+		</li>
+	</ul>
+<p>The sneakers that we have aviable are:</p>
+<ul>
+	<li *ngFor="let oSneaker of aShoes">
+			<span [ngStyle]="{
+				'text-decoration': !oSneaker.bStock ? 'line-through' : 'none'
+			}">
+				{{oSneaker.sName}} - 
+				<strong 
+					[class.highPrice]="oSneaker.nPrice >= 80"
+					[ngClass]="{
+						'redBackground': oSneaker.nPrice > 100,
+						'underlined': oSneaker.sBrand == 'Nike'
+					}"
+				>
+					{{oSneaker.nPrice}}€
+				</strong>
+			</span>
+			<span *ngIf="oSneaker.nPrice < 80"
+			 	  [style.background]="oSneaker.nPrice < 80 ? 'green' : 'transparent'" 
+			 	  [style.color]="oSneaker.nPrice < 80 ? 'white' : 'black'" 
+			 	  >¡EN OFERTA!</span>
+	</li>
+</ul>
+
+<p>The color of the most of our sneakers is:</p>
+<input type="text" [(ngModel)]="sColor"/>
+<ul [ngSwitch]="sColor">
+	<li *ngSwitchCase="'yellow'">
+		The predominant color is <span [ngStyle]="{'background': sColor}">yellow</span>.
+	</li>
+	<li *ngSwitchCase="'red'">
+		The predominant color is <span [ngStyle]="{'background': sColor}">red</span>.
+	</li>
+	<li *ngSwitchCase="'blue'">
+		The predominant color is <span [ngStyle]="{'background': sColor}">blue</span>.
+	</li>
+	<li *ngSwitchCase="'orange'">
+		The predominant color is <span [ngStyle]="{'background': sColor}">orange</span>..
+	</li>
+</ul>

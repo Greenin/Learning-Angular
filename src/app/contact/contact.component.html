@@ -1,0 +1,34 @@
+<h2>Contact</h2>
+
+<form #contactForm="ngForm" (ngSubmit)="mOnSubmit(contactForm)">
+	<label for="name">Name</label><br/>
+	<input type="text" name="name" #name="ngModel" [(ngModel)]="oUser.sName" required pattern="[a-zA-Z]+"/>
+	<span *ngIf="name.touched && !name.valid">
+		Name is required
+	</span>
+	<br/>
+
+	<label for="surname">Surname</label><br/>
+	<input type="text" name="surname" #surname="ngModel" [(ngModel)]="oUser.sSurname" required pattern="[a-zA-Z]+"/>
+	<span *ngIf="surname.touched && !surname.valid">
+		Surname is required
+	</span>
+	<br/>
+
+	<label for="email">Email</label><br/>
+	<input type="email" name="email" #email="ngModel" [(ngModel)]="oUser.sEmail" required/>
+	<span *ngIf="email.touched && !email.valid">
+		Email is not valid
+	</span>
+	<br/>
+
+	<label for="message">Message</label><br/>
+	<textarea name="message" #message="ngModel" [(ngModel)]="oUser.sMessage" required></textarea>
+	<span *ngIf="message.touched && !message.valid">
+		Message is required
+	</span>
+	<br/>
+
+	<input type="submit" value="Send" [disabled]="!contactForm.form.valid">
+
+</form>

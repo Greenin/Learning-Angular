@@ -1,0 +1,19 @@
+.highPrice{
+	color:gray;
+	font-size: 18px;
+}
+
+
+.redBackground{
+	background: red;
+}
+
+
+.underlined{
+	text-decoration: underline;
+}
+
+
+.active{
+	border: 3px solid yellow;
+}

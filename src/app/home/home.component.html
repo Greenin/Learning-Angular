@@ -1,0 +1,13 @@
+<h2>Homepage</h2>
+
+<div *ngIf="bLoginDone; then tempLogin else tempNotLogin"></div>
+
+<ng-template #tempLogin>
+	<h3>Login done</h3>
+	<button (click)="mLogout()">Logout</button>
+</ng-template>
+
+<ng-template #tempNotLogin>
+	<p>You haven't logged in, click on this button to login</p>
+	<button (click)="mLogin()">Login</button>
+</ng-template>

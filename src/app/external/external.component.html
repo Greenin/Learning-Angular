@@ -1,0 +1,48 @@
+<h2>Create user</h2>
+
+<form #newUser="ngForm" (ngSubmit)="onSubmit(newUser)">
+	<p>
+		<label for="name">Name</label>
+		<input type="text" name="name" #name="ngModel" [(ngModel)]="oNew_User.name" required/>
+		<span *ngIf="name.touched && !name.valid">
+			Name is not valid.
+		</span>
+	</p>
+	<p>
+		<label for="job">Job</label>
+		<input type="text" name="job" #job="ngModel" [(ngModel)]="oNew_User.job" required/>
+		<span *ngIf="job.touched && !job.valid">
+			Job is not valid.
+		</span>
+	</p>
+
+	<input type="submit" value="Save user" [disabled]="!newUser.form.valid">
+</form>
+
+<div *ngIf="oUserSaved">
+	<h2>User saved correctly</h2>
+	<h3>{{oUserSaved.name}}</h3>
+	<h4>{{oUserSaved.job}}</h4>
+</div>
+
+<hr>
+
+{{oDate | date: 'dd/MM/yy'}}<br/>
+{{oDate | date: 'fullDate' | uppercase }}<br/>
+{{ 'HELLO WORLD USING PIPES' | lowercase }}<br/>
+{{88 | calculator: 2}}
+
+<hr>
+<input type="text" [(ngModel)]="oUserId" (keyup.enter)="mLoadUser()"/>
+
+<div *ngIf="!oUser">
+	Loading ...
+</div>
+
+<div *ngIf="oUser">
+	<img src="{{oUser.avatar}}" width="200"/>
+	<h2>{{oUser.first_name + ' ' + oUser.last_name}}</h2>
+</div>
+
+
+
